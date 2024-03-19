@@ -1,8 +1,12 @@
-const mongoose=require("mongoose")
+const mongoose =require("mongoose")
 const {Schema}=mongoose
 
 const productSchema=new Schema({
     name:{
+        type:String,
+        required:true
+    },
+    img:{
         type:String,
         required:true
     },
@@ -11,15 +15,17 @@ const productSchema=new Schema({
         required:true,
         min:0
     },
-    img:{
-        type:String,
-        required:true
-    },
     desc:{
         type:String,
         required:true
-    }
+    },
+    reviews:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"Review"
+        }
+    ]
 })
 
-const Product=mongoose.model("Product",productSchema)
+const Product =mongoose.model("Product",productSchema)
 module.exports=Product
