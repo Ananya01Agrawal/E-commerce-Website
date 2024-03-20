@@ -6,15 +6,15 @@ const router = express.Router()
 router.get("/product/:id/addreviews", async(req, res) => {
     console.log("reviews");
     const { rating, comment } = req.query
-    let id = req.params.id
-    let product =await Product.findById(id)
-    let review = new Review({ rating, comment })
-    product.reviews.push(review)
+    let id = req.params.id//to get the id from the url
+    let product =await Product.findById(id)//to find the product by id
+    let review = new Review({ rating, comment })//to creae review
+    product.reviews.push(review)//pushing the reviews in the review array
 
-   await product.save()
-   await review.save()
+   await product.save()//to save the product
+   await review.save()//to save product review
 
-   res.redirect(`/products/${id}`)
+   res.redirect(`/products/${id}`)//re-directing to the product page
 })
 
 module.exports = router
