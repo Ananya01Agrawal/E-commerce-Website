@@ -3,7 +3,7 @@ const Product = require("../model/Product")
 const Review = require("../model/Review")
 const router = express.Router()
 
-router.get("/product/:id/addreviews", async(req, res) => {
+router.get("/product/:id/addreview", async(req, res) => {
     console.log("reviews");
     const { rating, comment } = req.query
     let id = req.params.id//to get the id from the url
